@@ -1,0 +1,9 @@
+01-overview.png:
+  en: "A data-centre topology drawn on the dashboard: hosts placed on the grid, links between them, the host list ready to drop more."
+  cs: "Topologie datacentra nakreslená přímo na dashboardu: hosty na mřížce, spoje mezi nimi, seznam hostů připravený k přetažení dalších."
+02-map.png:
+  en: "The map itself - firewall, core switch, web and database tiers, link labels for the uplink and the replication."
+  cs: "Samotná mapa - firewall, core switch, webová a databázová vrstva, popisky spojů pro uplink a replikaci."
+06-settings.png:
+  en: "The widget form: name, refresh interval and the Zabbix map the editor works on."
+  cs: "Formulář widgetu: název, interval obnovy a mapa Zabbixu, se kterou editor pracuje."
