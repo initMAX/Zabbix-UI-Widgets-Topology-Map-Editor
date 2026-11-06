@@ -112,9 +112,9 @@ For transfer between Zabbix instances, export JSON from the source, import it in
 
 ## Install
 
-Both **FREE** and **PRO** ship as **GPG-signed `deb` / `rpm` packages** from the initMAX repository - `apt` / `dnf` installs them and keeps them updated. Same flow for both editions; PRO just adds your personal repo token.
+Both **FREE** and **PRO** ship as **GPG-signed `deb` / `rpm` packages** for native installations and **RSA-signed Alpine `apk` packages** for Docker frontends, from the initMAX repository. Use `apt` / `dnf` / `zypper` for native installation and updates. Same flow for both editions; PRO just adds your personal repo token.
 
-Running the Zabbix frontend in Docker? The same repository serves an Alpine (`apk`) package, and the **Docker** tab of the Portal installer writes the Dockerfile block for your edition.
+Running the Zabbix frontend in Docker? The **Docker** tab of the Portal installer prepares the Dockerfile block and build command for your edition. Alpine APK is the recommended method; DEB/RPM are also available for matching base images, or use a manual ZIP installation in a persistent volume. For package updates, rebuild your frontend image and recreate the container.
 
 ### Easiest way - the guided installer on the Portal
 
@@ -164,7 +164,7 @@ The FREE edition is a real editor: place, arrange, layer, save, reload and edit.
 | ------------ | ------------------------------------------------------------ |
 | **Zabbix**   | 6.0 · 6.2 · 6.4 · 7.0 · 7.2 · 7.4 · 8.0 - one package covers all |
 | **PHP**      | 7.4 or newer                                                 |
-| **OS**       | Debian/Ubuntu · RHEL/Rocky/Alma/Oracle/Amazon · SUSE         |
+| **OS**       | Debian/Ubuntu · RHEL/Rocky/Alma/Oracle/Amazon · SUSE; Alpine APK for Docker frontends |
 | **Editions** | FREE (public repo) · PRO (token-gated repo)                  |
 | **Background images** | PNG and PDF (first page, converted to PNG in the browser), up to 6 MiB and within PHP's `upload_max_filesize` / `post_max_size`. Stored in the Zabbix database as background images (`images` table), so nothing on the frontend disk needs to be writable. Backgrounds uploaded by an older release are moved into the database automatically the first time the widget is shown |
 | **Languages** | All 27 Zabbix display languages - the widget follows each user's own language setting |
@@ -172,7 +172,7 @@ The FREE edition is a real editor: place, arrange, layer, save, reload and edit.
 
 ### One package, every supported version
 
-Zabbix 6.0 and 6.2 accept only version 1 of the module manifest and 6.4 and newer only version 2, so the package carries both module trees and the installer deploys the one your frontend can load. The markup, the client, the stylesheet and the stored field names are the same code either way, so a topology drawn on 6.0 opens unchanged after an upgrade to 7.4, and the configuration dialog offers the same field, with the same label, in the same place on all six versions.
+Zabbix 6.0 and 6.2 accept only version 1 of the module manifest and 6.4 and newer only version 2, so the package carries both module trees and the installer deploys the one your frontend can load. The markup, the client, the stylesheet and the stored field names are the same code either way, so a topology drawn on 6.0 opens unchanged after an upgrade to 8.0, and the configuration dialog offers the same field, with the same label, in the same place on all seven supported versions.
 
 Two limits of the older frontends are worth knowing before you install. Neither is a knob that does nothing - the widget simply behaves within what the frontend allows:
 
